@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const imageElement = document.createElement('img');
         imageElement.src = series.finalImageUrl; // Use the final image URL
         imageElement.alt = series.seriesTitle;
+        imageElement.loading = 'lazy'; // Adiciona lazy loading para as imagens
         seriesCard.appendChild(imageElement);
         
         const titleElement = document.createElement('h3');
