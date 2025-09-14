@@ -27,14 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     seriesTitleEl.textContent = seriesData.seriesTitle;
     document.title = seriesData.seriesTitle;
 
-    const hls = new Hls();
-
     function playEpisode(episode, episodeLi) {
-        if (Hls.isSupported()) {
-            hls.loadSource(episode.url);
-            hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
-        }
+        video.src = episode.url;
+        video.play();
         episodeTitleEl.textContent = episode.title;
 
         // Update active state in UI
