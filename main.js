@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('Iniciando carregamento do site...');
     // Containers
     const popularRailContainer = document.getElementById('popular-rail');
     const seriesGridContainer = document.getElementById('series-grid-container');
@@ -44,16 +45,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const localFilename = sanitizeFilename(seriesTitle) + '.jpg';
         const localImageUrl = `local_covers/${localFilename}`;
 
+        console.log(`Tentando carregar imagem local para: ${seriesTitle} (${localImageUrl})`);
+
         // Try to load from local_covers
         try {
             const response = await fetchWithTimeout(localImageUrl, 500); // Short timeout for local files
             if (response.ok) {
+                console.log(`Imagem local encontrada para: ${seriesTitle}`);
                 return localImageUrl; // Found local image
             }
         } catch (e) {
             // Local file not found or timeout
-            console.log(`Local image not found or timed out for ${seriesTitle}.`);
+            console.log(`Imagem local NÃO encontrada ou tempo esgotado para ${seriesTitle}.`);
         }
+        console.log(`Usando imagem de fallback para: ${seriesTitle}`);
         return item.imageUrl || 'images/cf-no-screenshot-error.png'; // Fallback to M3U or generic
     }
 
@@ -111,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (msg.type === 'batch') {
+                console.log(`Processando lote de ${msg.data.length} itens do M3U...`);
                 msg.data.forEach(item => {
                     if (item.category === 'series') tempSeries.push(item);
                     if (item.category === 'filmes') tempMovies.push(item);
@@ -118,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (msg.type === 'done') {
+                console.log('Todos os dados do M3U foram processados. Total de séries: ' + tempSeries.length + ', Total de filmes: ' + tempMovies.length);
                 allSeriesData = tempSeries;
                 allMoviesData = tempMovies;
 
@@ -136,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 await Promise.allSettled(localImagePromises); // Wait for all local fetches to complete
 
+                console.log('Conteúdo principal carregado e pronto para exibição.');
                 loadingOverlay.style.display = 'none';
                 appContainer.classList.remove('hidden');
 
