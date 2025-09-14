@@ -1,0 +1,103 @@
+/* Player Page Styles */
+.player-page-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.player-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #000;
+    border-bottom: 1px solid #333;
+}
+
+.back-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin-right: 20px;
+}
+
+#series-title {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.player-layout {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+#player-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#video-player {
+    width: 100%;
+    background-color: #000;
+    flex-grow: 1;
+}
+
+#episode-title {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+#episode-list-container {
+    width: 350px;
+    min-width: 300px;
+    background-color: #1a1a1a;
+    padding: 10px;
+    overflow-y: auto;
+    border-left: 1px solid #333;
+}
+
+#episode-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#episode-list li {
+    padding: 15px;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#episode-list li:hover {
+    background-color: #333;
+}
+
+#episode-list li.active {
+    background-color: #e50914;
+    font-weight: bold;
+}
+
+#episode-list li.watched {
+    opacity: 0.6;
+}
+
+#episode-list li.watched::after {
+    content: ' ✔';
+    color: #28a745;
+}
+
+/* Responsive adjustments for player */
+@media (max-width: 768px) {
+    .player-layout {
+        flex-direction: column;
+    }
+    #episode-list-container {
+        width: 100%;
+        max-height: 40vh;
+        border-left: none;
+        border-top: 1px solid #333;
+    }
+}

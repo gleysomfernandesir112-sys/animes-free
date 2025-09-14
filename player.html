@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistindo...</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/player-styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+    <div class="player-page-container">
+        <header class="player-header">
+            <a href="index.html" class="back-link">❮ Voltar para a lista</a>
+            <h1 id="series-title">Carregando...</h1>
+        </header>
+        <div class="player-layout">
+            <div id="player-container">
+                <video id="video-player" controls></video>
+                <h2 id="episode-title"></h2>
+            </div>
+            <div id="episode-list-container">
+                <h3>Episódios</h3>
+                <ul id="episode-list"></ul>
+            </div>
+        </div>
+    </div>
+    <script src="player.js"></script>
+</body>
+</html>

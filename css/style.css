@@ -1,0 +1,219 @@
+body {
+    font-family: sans-serif;
+    background-color: #141414;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #141414;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #e50914;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none;
+}
+
+header {
+    background-color: #000;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    border-left: 4px solid #e50914;
+    padding-left: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1a1a1a;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-buttons button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.filter-buttons button:hover {
+    background-color: #444;
+}
+
+.filter-buttons button.active {
+    background-color: #e50914;
+}
+
+.search-bar input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #333;
+    color: #fff;
+    width: 250px;
+}
+
+.card-rail {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 20px; /* For scrollbar */
+    gap: 20px;
+}
+
+.card-rail .anime-card {
+    flex: 0 0 200px; /* Fixed width for cards in a rail */
+}
+
+#series-grid-container,
+#movies-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.anime-card {
+    background-color: #222;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.anime-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.anime-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.anime-card.loading img {
+    filter: blur(5px);
+}
+
+.anime-card.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #e50914;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.anime-card h3 {
+    padding: 15px;
+    margin: 0;
+    font-size: 1em;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-message {
+    color: #ff4d4d;
+    text-align: center;
+}
+
+#missing-covers-section {
+    background-color: #222;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 40px;
+    border: 1px solid #e50914;
+}
+
+#missing-covers-section h2 {
+    color: #e50914;
+    border-left-color: #e50914;
+}
+
+#missing-covers-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#missing-covers-list li {
+    background-color: #333;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+#hide-missing-covers {
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}

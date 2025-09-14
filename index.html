@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animes Online</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/player-styles.css">
+    <link rel="icon" href="data:,">
+    <script type='text/javascript' src='//pl27644395.revenuecpmgate.com/a3/00/19/a3001995e025961b73ee3598768fca9e.js'></script>
+</head>
+<body>
+    <div id="loading-overlay">
+        <div class="loader"></div>
+    </div>
+
+    <div id="app-container" class="hidden">
+        <header>
+            <h1>Animes Online</h1>
+            <nav>
+                <div class="filter-buttons">
+                    <button id="filter-series" class="active">Séries</button>
+                    <button id="filter-movies">Filmes</button>
+                </div>
+                <div class="search-bar">
+                    <input type="search" id="search-input" placeholder="Buscar...">
+                </div>
+            </nav>
+        </header>
+        <main>
+            <section id="popular-section">
+                <h2>Populares</h2>
+                <div class="card-rail" id="popular-rail"></div>
+            </section>
+
+            <div id="series-view">
+                <section id="all-series-section">
+                    <h2>Catálogo de Séries</h2>
+                    <div id="series-grid-container"></div>
+                </section>
+            </div>
+
+            <div id="movies-view" class="hidden">
+                 <section id="all-movies-section">
+                    <h2>Catálogo de Filmes</h2>
+                    <div id="movies-grid-container"></div>
+                </section>
+            </div>
+
+            <section id="missing-covers-section" class="hidden">
+                <h2>Capas Ausentes</h2>
+                <p>As capas abaixo não foram encontradas localmente. Você pode tentar baixá-las novamente usando o script `download_covers.py`.</p>
+                <ul id="missing-covers-list"></ul>
+                <button id="hide-missing-covers">Ocultar Lista</button>
+            </section>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
