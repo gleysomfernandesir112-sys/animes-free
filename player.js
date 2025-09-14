@@ -4,8 +4,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const video = document.getElementById('video-player');
     const episodeListEl = document.getElementById('episode-list');
 
-    const seriesData = JSON.parse(sessionStorage.getItem('currentSeries'));
-    let watchedEpisodes = JSON.parse(localStorage.getItem(seriesData?.seriesTitle) || '[]');
+    let seriesData = null;
+    try {
+        seriesData = JSON.parse(sessionStorage.getItem('currentSeries'));
+    } catch (e) {
+        console.error('Erro ao carregar seriesData do sessionStorage:', e);
+    }
+    let watchedEpisodes = [];
+    try {
+        watchedEpisodes = JSON.parse(localStorage.getItem(seriesData?.seriesTitle) || '[]');
+    } catch (e) {
+        console.error('Erro ao carregar watchedEpisodes do localStorage:', e);
+        // Fallback to an empty array if parsing fails
+        watchedEpisodes = [];
+    }
 
     if (!seriesData) {
         seriesTitleEl.textContent = "Erro: Nenhum dado da série encontrado.";
